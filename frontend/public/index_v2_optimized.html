@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AQUAMIND - Le Cerveau des Bassins Africains</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0084d6;
+            --secondary: #00c9e7;
+            --accent: #ff6b6b;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: #333;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        /* NAVBAR OPTIMIZED */
+        nav.navbar {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 132, 214, 0.2);
+            padding: 1rem 0;
+        }
+
+        nav.navbar .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav.navbar .nav-link {
+            color: white !important;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            position: relative;
+        }
+
+        nav.navbar .nav-link:hover {
+            color: var(--secondary) !important;
+            transform: translateY(-2px);
+        }
+
+        nav.navbar .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s ease;
+        }
+
+        nav.navbar .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* HERO SECTION - PREMIUM */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 50%, var(--secondary) 100%);
+            color: white;
+            padding: 100px 20px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="30" fill="none" stroke="white" stroke-width="1" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="none"/><rect width="1200" height="600" fill="url(%23pattern)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.8s ease;
+        }
+
+        .hero .tagline {
+            font-size: clamp(1rem, 3vw, 1.5rem);
+            font-weight: 300;
+            margin-bottom: 30px;
+            color: var(--secondary);
+            animation: slideUp 0.8s ease;
+        }
+
+        .hero .description {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.9);
+            animation: fadeIn 1s ease;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: bounceIn 1s ease;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0, 201, 231, 0.4);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 201, 231, 0.6);
+            color: white;
+        }
+
+        .btn-secondary-custom {
+            background: transparent;
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+            padding: 13px 38px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary-custom:hover {
+            background: var(--secondary);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes bounceIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* FEATURES SECTION */
+        .features-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #f8f9fa 0%, white 100%);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 3rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 132, 214, 0.2);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* KPI DASHBOARD */
+        .kpi-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+        }
+
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .kpi-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--secondary);
+        }
+
+        .kpi-number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .kpi-label {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 600;
+        }
+
+        .kpi-trend {
+            font-size: 0.9rem;
+            margin-top: 10px;
+            color: var(--success);
+        }
+
+        /* AI MODELS SECTION */
+        .models-section {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .model-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 132, 214, 0.25);
+        }
+
+        .model-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .model-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .model-accuracy {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--secondary);
+        }
+
+        .model-body {
+            padding: 20px;
+        }
+
+        .model-body p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .progress-bar-custom {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        /* DASHBOARD PREVIEW */
+        .dashboard-section {
+            padding: 80px 20px;
+            background: white;
+        }
+
+        .dashboard-preview {
+            background: linear-gradient(135deg, #f0f7ff 0%, #f0ffff 100%);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0, 132, 214, 0.15);
+            overflow-x: auto;
+        }
+
+        .chart-placeholder {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .chart-data {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 15px;
+        }
+
+        .data-point {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 50px;
+            }
+
+            nav.navbar .navbar-brand {
+                font-size: 1.4rem;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .dashboard-preview {
+                padding: 20px;
+            }
+
+            .feature-card, .model-card {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav.navbar {
+                padding: 0.8rem 0;
+            }
+
+            nav.navbar .nav-link {
+                margin: 5px 0;
+                font-size: 0.95rem;
+            }
+
+            .kpi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary-custom, .btn-secondary-custom {
+                width: 100%;
+            }
+
+            .hero {
+                padding: 50px 15px 40px;
+            }
+
+            .features-section, .models-section, .dashboard-section, .kpi-section, .cta-section {
+                padding: 50px 15px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        footer p {
+            margin: 10px 0;
+            opacity: 0.9;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: var(--secondary);
+            text-decoration: none;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* LOADING & ANIMATIONS */
+        .pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-brain"></i> AQUAMIND
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#features">Fonctionnalités</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kpis">KPIs</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#models">Modèles IA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#dashboard">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link btn-primary-custom" href="#cta">Déployer Maintenant</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>AQUAMIND</h1>
+            <p class="tagline">🧠 Le Cerveau des Bassins Africains</p>
+            <p class="description">
+                AQUAMIND révolutionne la gestion des ressources hydriques en Afrique grâce à l'intelligence artificielle.
+                <br>
+                <strong>Prédictions précises • Gestion optimale • Données en temps réel • Impact durable</strong>
+            </p>
+            <div class="cta-buttons">
+                <a href="#dashboard" class="btn-primary-custom">
+                    <i class="fas fa-chart-line"></i> Voir le Dashboard
+                </a>
+                <a href="#" class="btn-secondary-custom" onclick="loadDashboard();">
+                    <i class="fas fa-play-circle"></i> Essayer Maintenant
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features-section" id="features" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Nos Capacités</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <h3>Monitoring Hydrique</h3>
+                        <p>Surveillance en temps réel des niveaux d'eau, débits et qualité de l'eau dans les bassins africains.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-crystal-ball"></i>
+                        </div>
+                        <h3>Prédictions IA</h3>
+                        <p>5 modèles IA travaillent ensemble pour prévoir les sécheresses et inondations avec 92% d'précision.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Optimisation Agricole</h3>
+                        <p>Recommandations pour l'irrigation intelligente et maximisation des rendements agricoles.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-map"></i>
+                        </div>
+                        <h3>Géospatialité</h3>
+                        <p>Cartes interactives avec géolocalisation précise des stations de mesure et bassins hydrographiques.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-bell"></i>
+                        </div>
+                        <h3>Alertes Intelligentes</h3>
+                        <p>Notifications proactives en cas de risque d'inondation ou sécheresse avec recommandations.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h3>Analytiques Avancées</h3>
+                        <p>Tableaux de bord professionnels avec analyses tendances et rapports détaillés exportables.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KPI SECTION -->
+    <section class="kpi-section" id="kpis" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Nos Impact</h2>
+            <div class="kpi-grid">
+                <div class="kpi-card" data-aos="zoom-in">
+                    <div class="kpi-number" id="kpi1">1,250,000</div>
+                    <div class="kpi-label">Habitants Protégés</div>
+                    <div class="kpi-trend">↑ 15% ce mois</div>
+                </div>
+                <div class="kpi-card" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="kpi-number" id="kpi2">92%</div>
+                    <div class="kpi-label">Précision des Prédictions</div>
+                    <div class="kpi-trend">↑ 3% vs année dernière</div>
+                </div>
+                <div class="kpi-card" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="kpi-number" id="kpi3">847</div>
+                    <div class="kpi-label">Événements Évités</div>
+                    <div class="kpi-trend">Depuis 2020</div>
+                </div>
+                <div class="kpi-card" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="kpi-number" id="kpi4">23</div>
+                    <div class="kpi-label">Pays Connectés</div>
+                    <div class="kpi-trend">En expansion</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI MODELS SECTION -->
+    <section class="models-section" id="models" data-aos="fade-up">
+        <div class="container">
+            <h2 class="section-title">Nos Modèles IA</h2>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="model-card">
+                        <div class="model-header">
+                            <div class="model-name">LSTM</div>
+                            <div class="model-accuracy">94%</div>
+                        </div>
+                        <div class="model-body">
+                            <p><strong>Long Short-Term Memory</strong></p>
+                            <p>Analyse les séries temporelles pour prédire les niveaux d'eau.</p>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 94%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="model-card">
+                        <div class="model-header">
+                            <div class="model-name">Transformer</div>
+                            <div class="model-accuracy">91%</div>
+                        </div>
+                        <div class="model-body">
+                            <p><strong>Architecture Attention</strong></p>
+                            <p>Capture les dépendances complexes dans les données.</p>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 91%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="model-card">
+                        <div class="model-header">
+                            <div class="model-name">ConvLSTM</div>
+                            <div class="model-accuracy">89%</div>
+                        </div>
+                        <div class="model-body">
+                            <p><strong>Spatiotemporal</strong></p>
+                            <p>Combine convolution et LSTM pour les données spatiales.</p>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 89%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="model-card">
+                        <div class="model-header">
+                            <div class="model-name">GNN</div>
+                            <div class="model-accuracy">88%</div>
+                        </div>
+                        <div class="model-body">
+                            <p><strong>Graph Neural Network</strong></p>
+                            <p>Modélise les relations entre les bassins hydrographiques.</p>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 88%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="model-card">
+                        <div class="model-header">
+                            <div class="model-name">RL</div>
+                            <div class="model-accuracy">90%</div>
+                        </div>
+                        <div class="model-body">
+                            <p><strong>Reinforcement Learning</strong></p>
+                            <p>Optimise les stratégies de gestion des ressources.</p>
+                            <div class="progress-bar-custom">
+                                <div class="progress-fill" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DASHBOARD PREVIEW -->
+    <section class="dashboard-section" id="dashboard">
+        <div class="container">
+            <h2 class="section-title">Tableau de Bord en Temps Réel</h2>
+            <div class="dashboard-preview">
+                <div class="chart-placeholder">
+                    <div class="chart-title">Niveaux d'Eau par Bassin (mètres)</div>
+                    <div class="chart-data" id="waterLevelsChart">
+                        <div class="data-point">Bassin Fleuve <br> <strong id="basin1">245m</strong></div>
+                        <div class="data-point">Lac Central <br> <strong id="basin2">187m</strong></div>
+                        <div class="data-point">Retenue Sud <br> <strong id="basin3">156m</strong></div>
+                        <div class="data-point">Bassin Est <br> <strong id="basin4">203m</strong></div>
+                    </div>
+                </div>
+
+                <div class="chart-placeholder">
+                    <div class="chart-title">Prédictions 7 Jours</div>
+                    <div class="chart-data" id="predictionsChart">
+                        <div class="data-point">J+1<br><strong>+2.3m</strong><br>↑</div>
+                        <div class="data-point">J+2<br><strong>+1.8m</strong><br>↑</div>
+                        <div class="data-point">J+3<br><strong>-0.5m</strong><br>↓</div>
+                        <div class="data-point">J+4<br><strong>-1.2m</strong><br>↓</div>
+                        <div class="data-point">J+5<br><strong>+0.3m</strong><br>→</div>
+                        <div class="data-point">J+6<br><strong>+2.1m</strong><br>↑</div>
+                        <div class="data-point">J+7<br><strong>+3.5m</strong><br>↑↑</div>
+                    </div>
+                </div>
+
+                <div class="chart-placeholder">
+                    <div class="chart-title">Santé des Modèles IA</div>
+                    <div class="chart-data" id="modelsHealthChart">
+                        <div class="data-point">LSTM<br><strong style="color: #2ecc71;">✓</strong><br>94%</div>
+                        <div class="data-point">Transformer<br><strong style="color: #2ecc71;">✓</strong><br>91%</div>
+                        <div class="data-point">ConvLSTM<br><strong style="color: #2ecc71;">✓</strong><br>89%</div>
+                        <div class="data-point">GNN<br><strong style="color: #2ecc71;">✓</strong><br>88%</div>
+                    </div>
+                </div>
+
+                <div class="chart-placeholder">
+                    <div class="chart-title">Taux de Confiance Global</div>
+                    <div class="progress-bar-custom" style="height: 20px;">
+                        <div class="progress-fill" id="confidenceBar" style="width: 92%; height: 100%;"></div>
+                    </div>
+                    <p style="text-align: center; margin-top: 10px; font-weight: 700; color: var(--primary);">
+                        <span id="confidencePercent">92%</span> Confiance Système
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <h2>Prêt à Révolutionner la Gestion de l'Eau?</h2>
+            <p>Rejoignez les gouvernements et organisations qui font confiance à AQUAMIND.</p>
+            <a href="https://github.com/aquamind" class="btn-primary-custom" target="_blank">
+                <i class="fab fa-github"></i> Code Source
+            </a>
+            <a href="#" class="btn-secondary-custom" onclick="loadFullApp();">
+                <i class="fas fa-rocket"></i> Accéder à l'App Complète
+            </a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p><strong>AQUAMIND</strong> - Le Cerveau des Bassins Africains</p>
+            <p>Version 1.0 | Technologies: React, FastAPI, TensorFlow, PostgreSQL</p>
+            <div class="footer-links">
+                <a href="#">Documentation</a>
+                <a href="#">GitHub</a>
+                <a href="#">Contact</a>
+                <a href="#">Blog</a>
+            </div>
+            <p>© 2026 AQUAMIND. Tous droits réservés. | <a href="#" style="color: var(--secondary);">Politique de Confidentialité</a></p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 50
+        });
+
+        // Simulated data updates
+        function updateDashboard() {
+            const waterLevels = [
+                { id: 'basin1', min: 220, max: 270, label: 'm' },
+                { id: 'basin2', min: 160, max: 210, label: 'm' },
+                { id: 'basin3', min: 130, max: 180, label: 'm' },
+                { id: 'basin4', min: 180, max: 230, label: 'm' },
+                { id: 'kpi1', min: 1000000, max: 1500000, label: '' },
+                { id: 'kpi2', min: 88, max: 95, label: '%' },
+                { id: 'kpi3', min: 800, max: 900, label: '' },
+                { id: 'kpi4', min: 20, max: 25, label: '' },
+                { id: 'confidencePercent', min: 85, max: 95, label: '%' },
+                { id: 'confidenceBar', min: 85, max: 95, isProgress: true }
+            ];
+
+            waterLevels.forEach(item => {
+                const value = Math.random() * (item.max - item.min) + item.min;
+                const element = document.getElementById(item.id);
+                
+                if (element) {
+                    if (item.isProgress) {
+                        element.style.width = value + '%';
+                    } else {
+                        if (item.id.includes('kpi')) {
+                            element.textContent = Math.round(value).toLocaleString() + item.label;
+                        } else {
+                            element.textContent = Math.round(value) + item.label;
+                        }
+                    }
+                }
+            });
+        }
+
+        // Update every 5 seconds
+        setInterval(updateDashboard, 5000);
+        updateDashboard();
+
+        // Load dashboard smoothly
+        function loadDashboard() {
+            const dashboardSection = document.getElementById('dashboard');
+            dashboardSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // Show notification
+            const notification = document.createElement('div');
+            notification.className = 'position-fixed p-4 m-4 bg-success text-white rounded';
+            notification.style.top = '0';
+            notification.style.right = '0';
+            notification.textContent = '✓ Dashboard chargé avec succès!';
+            notification.style.zIndex = '9999';
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.remove(), 3000);
+        }
+
+        // Load full app
+        function loadFullApp() {
+            alert('Redirection vers l\'application complète (déploiement en court!)');
+            // window.location.href = '/app';
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Responsive navbar collapse
+        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                const navbar = document.querySelector('.navbar-collapse');
+                if (navbar.classList.contains('show')) {
+                    const toggler = document.querySelector('.navbar-toggler');
+                    toggler.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1 @@
+# AQUAMIND Schemas Package

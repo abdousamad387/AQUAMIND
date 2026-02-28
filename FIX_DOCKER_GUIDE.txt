@@ -1,0 +1,180 @@
+╔═════════════════════════════════════════════════════════════════════════════════╗
+║                                                                                 ║
+║            🔧 CORRECTION DE DOCKER DESKTOP - GUIDE RAPIDE 🔧                  ║
+║                                                                                 ║
+║                          Docker Desktop refuse de s'ouvrir?                    ║
+║                                      Voici la solution!                         ║
+║                                                                                 ║
+╚═════════════════════════════════════════════════════════════════════════════════╝
+
+
+═════════════════════════════════════════════════════════════════════════════════════════
+                            ⚡ SOLUTION RAPIDE (5 min)
+═════════════════════════════════════════════════════════════════════════════════════════
+
+Le problème vient probablement de WSL2 (Windows Subsystem for Linux) qui n'est pas
+installe ou configure correctement.
+
+SOLUTION EN 3 ETAPES:
+
+
+ETAPE 1: Ouvrir PowerShell en ADMINISTRATEUR
+─────────────────────────────────────────────────────────────────────────────────
+
+  1. Clic droit sur le bouton Demarrer Windows
+  2. Selectionnez "Windows PowerShell (administrateur)" ou "Terminal (administrateur)"
+  3. Acceptez le message de confirmation
+
+
+ETAPE 2: Lancer la commande WSL
+─────────────────────────────────────────────────────────────────────────────────
+
+  Copie-collez cette commande dans PowerShell:
+
+  wsl --install
+
+  ↑ C'est tout! Juste ca!
+
+
+ETAPE 3: Redemarrer l'ordinateur
+─────────────────────────────────────────────────────────────────────────────────
+
+  Apres la commande:
+  1. Redemarrez votre ordinateur (IMPORTANT!)
+  2. Docker Desktop devrait maintenant s'ouvrir
+  3. Lancez START.bat comme avant
+
+
+═════════════════════════════════════════════════════════════════════════════════════════
+                        🔍 DIAGNOSTIQUER VOTRE PROBLEME EXACT
+═════════════════════════════════════════════════════════════════════════════════════════
+
+Voulez-vous savoir exactement ce qui pose probleme?
+
+Lancez ce script:
+
+  1. Ouvrez PowerShell EN ADMINISTRATEUR
+  2. Allez dans le dossier AQUAMIND:
+     cd "c:\Users\user\Desktop\PROJET _PROJET\AQUAMIND"
+
+  3. Lancez le script de diagnostic:
+     powershell -ExecutionPolicy Bypass -File FIX_DOCKER.ps1
+
+  4. Le script vous dira exactement ce qui manque
+
+
+═════════════════════════════════════════════════════════════════════════════════════════
+                        📋 CHECKLIST DE PROBLEMES COURANTS
+═════════════════════════════════════════════════════════════════════════════════════════
+
+PROBLEME 1: "Docker Desktop refuse de s'ouvrir"
+─────────────────────────────────────────────────────────────────────────────────
+Solution:
+  ✓ Installez WSL2 (voir etape rapide ci-dessus)
+  ✓ Activez Hyper-V (voir ci-dessous)
+  ✓ Redemarrez votre ordinateur
+
+
+PROBLEME 2: "Erreur WSL2 Kernel"
+─────────────────────────────────────────────────────────────────────────────────
+Solution:
+  1. Allez sur: https://aka.ms/wsl2kernel
+  2. Telechargez le WSL2 Linux Kernel Update Package
+  3. Installez-le
+  4. Redemarrez votre ordinateur
+
+
+PROBLEME 3: "Hyper-V n'est pas active"
+─────────────────────────────────────────────────────────────────────────────────
+Solution:
+  1. Ouvrez PowerShell EN ADMINISTRATEUR
+  2. Lancez cette commande:
+
+     Enable-WindowsOptionalFeature -Online -FeatureName Hyper-V -All
+
+  3. Redemarrez votre ordinateur
+
+
+PROBLEME 4: "Docker reclame mon mot de passe"
+─────────────────────────────────────────────────────────────────────────────────
+Solution:
+  1. Docker a besoin que vous vous authentifiiez une premiere fois
+  2. Entrez votre mot de passe Windows
+  3. Cliquez sur "OK"
+
+
+PROBLEME 5: Docker plante apres le demarrage
+─────────────────────────────────────────────────────────────────────────────────
+Solutions a essayer dans cet ordre:
+
+  1. Desinstallez Docker Desktop completement
+     (Panneau de configuration → Programmes → Desinstaller un programme)
+
+  2. Redemarrez votre ordinateur
+
+  3. Reinstallez Docker Desktop
+     (Telechargez sur: https://www.docker.com/products/docker-desktop)
+
+  4. Redemarrez a nouveau
+
+
+═════════════════════════════════════════════════════════════════════════════════════════
+                        🔗 LIENS UTILES
+═════════════════════════════════════════════════════════════════════════════════════════
+
+WSL2 Kernel Update:
+  https://aka.ms/wsl2kernel
+
+Docker Desktop Download:
+  https://www.docker.com/products/docker-desktop
+
+Docker Documentation:
+  https://docs.docker.com/desktop/install/windows-install/
+
+
+═════════════════════════════════════════════════════════════════════════════════════════
+                        💡 CONSEILS
+═════════════════════════════════════════════════════════════════════════════════════════
+
+• N'oubliez pas de REDEMARRER apres chaque installation
+• Utilisez toujours PowerShell EN ADMINISTRATEUR
+• Attendez quelques secondes après le redémarrage avant de relancer Docker
+• Si vous avez un antivirus, assurez-vous qu'il n'interfere pas avec Docker
+
+
+═════════════════════════════════════════════════════════════════════════════════════════
+                        ✅ COMMENT VERIFIER QUE CA MARCHE
+═════════════════════════════════════════════════════════════════════════════════════════
+
+Pour confirmer que Docker fonctionne:
+
+1. Ouvrez PowerShell (pas necessairement en admin)
+2. Lancez cette commande:
+   docker --version
+
+3. Si vous voyez une version (ex: "Docker version 25.0.0"), Dragon Desktop marche!
+
+
+═════════════════════════════════════════════════════════════════════════════════════════
+                        🆘 ENCORE UN PROBLEME?
+═════════════════════════════════════════════════════════════════════════════════════════
+
+1. Lancez le diagnostic:
+   powershell -ExecutionPolicy Bypass -File FIX_DOCKER.ps1
+
+2. Notez exactement ce qu'il vous dit
+
+3. Essayez la solution correspondante ci-dessus
+
+4. Si ca ne marche toujours pas, essayez une desinstallation complete et
+   reinstallation de Docker Desktop
+
+
+═════════════════════════════════════════════════════════════════════════════════════════
+
+                        Une fois Docker qui marche:
+
+                    Revenez a START.bat et cliquez dessus!
+                  Votre systeme AQUAMIND sera operationnel en 5 min.
+
+═════════════════════════════════════════════════════════════════════════════════════════

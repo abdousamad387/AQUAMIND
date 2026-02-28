@@ -1,0 +1,168 @@
+╔═════════════════════════════════════════════════════════════════╗
+║                                                                 ║
+║     AQUAMIND RAPID DEPLOYMENT - 1-PAGE QUICK REFERENCE        ║
+║                                                                 ║
+╚═════════════════════════════════════════════════════════════════╝
+
+
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┓
+┃  PREREQ: Docker Desktop INSTALLED & RUNNING (blue whale icon)  ┃
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛
+
+
+═══════════════════════════════════════════════════════════════════
+
+🚀 DEPLOY IN 3 STEPS (Choose one method):
+
+═══════════════════════════════════════════════════════════════════
+
+METHOD A: ULTRA-SIMPLE (★★★★★ Recommended)
+───────────────────────────────────────────────────────────────────
+1. Navigate to: C:\Users\user\Desktop\PROJET _PROJET\AQUAMIND
+2. Double-click: START.bat
+3. Choose: 2 (Full deployment)
+4. Wait: 2-5 minutes
+5. Access: http://localhost:3000
+
+
+METHOD B: POWERSHELL (★★★★☆ Advanced)
+───────────────────────────────────────────────────────────────────
+1. Open PowerShell
+2. Run: cd "C:\Users\user\Desktop\PROJET _PROJET\AQUAMIND"
+3. Run: powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action deploy
+4. Wait: 2-5 minutes
+5. Access: http://localhost:3000
+
+
+METHOD C: BATCH (★★★★☆ Alternative)
+───────────────────────────────────────────────────────────────────
+1. Navigate to: C:\Users\user\Desktop\PROJET _PROJET\AQUAMIND
+2. Double-click: deploy.bat
+3. Wait: 2-5 minutes
+4. Access: http://localhost:3000
+
+
+═══════════════════════════════════════════════════════════════════
+
+✅ VERIFY DEPLOYMENT (Run this):
+
+  powershell -ExecutionPolicy Bypass -File health-check.ps1
+
+  All 6 services should show: [OK]
+  ✓ Backend (8000)
+  ✓ Frontend (3000)
+  ✓ PostgreSQL (5432)
+  ✓ Redis (6379)
+  ✓ Prometheus (9090)
+  ✓ Grafana (3001)
+
+
+═══════════════════════════════════════════════════════════════════
+
+🌐 ACCESS YOUR SYSTEM:
+
+  Frontend & Dashboard  → http://localhost:3000
+  API Documentation     → http://localhost:8000/docs
+  Grafana Dashboards    → http://localhost:3001
+  Prometheus Metrics    → http://localhost:9090
+  
+  Grafana Login: admin / aquamind
+
+
+═══════════════════════════════════════════════════════════════════
+
+❓ QUICK TROUBLESHOOTING:
+
+PROBLEM                     SOLUTION
+─────────────────────────────────────────────────────────────────
+Docker won't launch?        Launch from Start menu manually
+Port in use?                Stop other services or modify ports
+Services not starting?      Run: health-check.ps1 -Continuous
+Need detailed help?         Read: DEPLOYMENT_GUIDE.md
+Frontend shows error?       Wait 30s, refresh page (Ctrl+F5)
+Lost?                       Read: LISEZ_MOI_D_ABORD.txt
+
+
+═══════════════════════════════════════════════════════════════════
+
+📂 USEFUL COMMANDS:
+
+Check Status
+  powershell -ExecutionPolicy Bypass -File health-check.ps1
+
+View Logs
+  powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action logs
+
+Stop Services
+  powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action down
+
+Restart Services
+  powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action restart
+
+Continuous Monitoring
+  powershell -ExecutionPolicy Bypass -File health-check.ps1 -Continuous
+
+
+═══════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION FILES (Read when you need help):
+
+00-START-HERE.txt              ← You are here (but read this first!)
+LISEZ_MOI_D_ABORD.txt          French complete guide
+START_HERE_DEPLOYMENT.md       Technical complete guide
+DEPLOYMENT_GUIDE.md            Detailed reference & troubleshooting
+DEPLOYMENT_SCRIPTS_README.md   Script technical details
+DEPLOYMENT_CHECKLIST.txt       Step-by-step checklist
+CHOOSE_YOUR_PATH.txt           Help choosing deployment method
+
+
+═══════════════════════════════════════════════════════════════════
+
+⏱️ TIMELINE:
+
+Docker startup (if not running)  → ~30 seconds
+Service deployment               → 2-5 minutes
+First load of frontend           → 5-10 seconds
+TOTAL                            → ~10-15 minutes
+
+
+═══════════════════════════════════════════════════════════════════
+
+✨ WHAT YOU HAVE:
+
+✅ Modern React Dashboard (7 pages)
+✅ FastAPI Backend (30+ endpoints)
+✅ PostgreSQL Database (TimescaleDB + PostGIS)
+✅ Redis Cache
+✅ Prometheus Monitoring
+✅ Grafana Visualizations
+✅ 5 AI Models (LSTM, Transformer, ConvLSTM, GNN, RL)
+✅ Real-time Data Pipeline
+✅ 4 Deployment Scripts
+✅ 7 Documentation Guides
+
+
+═══════════════════════════════════════════════════════════════════
+
+🎯 NEXT STEPS (After deployment works):
+
+1. Explore the dashboard → http://localhost:3000
+2. Check API docs → http://localhost:8000/docs
+3. View Grafana → http://localhost:3001
+4. Integrate real data sources (optional)
+5. Scale to production (if needed)
+
+
+═══════════════════════════════════════════════════════════════════
+
+✅ ALL SET!
+
+→ Choose your deployment method above
+→ Follow the 3 steps
+→ Your system will be ready in 15 minutes!
+
+═══════════════════════════════════════════════════════════════════
+
+Version: 1.0.0
+Created: February 26, 2026
+Status: READY TO DEPLOY ✓

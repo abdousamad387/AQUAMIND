@@ -1,0 +1,173 @@
+/* App-specific styles and animations */
+
+.dashboard-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.dashboard-container {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.kpi-card {
+  transition: all 0.3s ease;
+  border-left: 4px solid #3b82f6;
+}
+
+.kpi-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.kpis-grid {
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.alerts-section {
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.maps-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-content {
+  min-width: 200px;
+}
+
+.popup-content h4 {
+  margin-bottom: 0.5rem;
+  color: #2563eb;
+}
+
+.popup-content p {
+  font-size: 0.875rem;
+  margin: 0.25rem 0;
+}
+
+.forecasts-page h1 {
+  animation: fadeInDown 0.5s ease;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Charts and visualizations */
+.chart-container {
+  position: relative;
+  height: 300px;
+  margin: 2rem 0;
+}
+
+/* Real-time indicators */
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Smooth transitions */
+a {
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Tables */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+  background-color: #f9fafb;
+  font-weight: 600;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+tr:hover {
+  background-color: #f9fafb;
+}
+
+/* Print styles */
+@media print {
+  .navigation,
+  .btn,
+  .form-control {
+    display: none;
+  }
+  
+  body {
+    background: white;
+  }
+  
+  .card {
+    page-break-inside: avoid;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

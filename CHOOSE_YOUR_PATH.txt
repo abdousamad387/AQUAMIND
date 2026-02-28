@@ -1,0 +1,263 @@
+AQUAMIND DEPLOYMENT - CHOOSE YOUR PATH
+═══════════════════════════════════════════════════════════════════════════════
+
+Vous avez demandé 3 scripts. Les voici! Voici comment les utiliser:
+
+═══════════════════════════════════════════════════════════════════════════════
+OPTION 1: DÉMARRAGE AUTOMATIQUE (Lancer Docker + App en 1 clic) ⭐ RECOMMANDÉ
+═══════════════════════════════════════════════════════════════════════════════
+
+Fichier:  START.bat
+Chemin:   C:\Users\user\Desktop\PROJET _PROJET\AQUAMIND\START.bat
+
+Utilisation:
+  → Double-cliquez simplement sur START.bat
+
+Ce qu'il fait:
+  1. Vérifie que Docker Desktop est installé
+  2. Lance Docker Desktop automatiquement (s'il n'est pas déjà lancé)
+  3. Attend que Docker soit prêt (jusqu'à 60 secondes)
+  4. Propose 2 options de déploiement
+  5. Déploie tous les services (2-5 minutes)
+  6. Affiche les URLs d'accès
+  7. Propose d'ouvrir le navigateur
+
+Avantages:
+  ✓ Super simple même pour les non-techniciens
+  ✓ Gère automatiquement Docker Desktop
+  ✓ Menu interactif clair
+  ✓ Affiche les instructions à chaque étape
+
+Temps total: 3-8 minutes (première fois)
+
+
+═══════════════════════════════════════════════════════════════════════════════
+OPTION 2: HEALTH CHECK EN TEMPS RÉEL (Monitoring de tous les services)
+═══════════════════════════════════════════════════════════════════════════════
+
+Fichier:  health-check.ps1
+Chemin:   C:\Users\user\Desktop\PROJET _PROJET\AQUAMIND\health-check.ps1
+
+Utilisation 1 - Vérification une fois:
+  powershell -ExecutionPolicy Bypass -File health-check.ps1
+
+Utilisation 2 - Monitoring continu (refresh toutes les 5 sec):
+  powershell -ExecutionPolicy Bypass -File health-check.ps1 -Continuous
+
+Utilisation 3 - Monitoring personnalisé (refresh toutes les 10 sec):
+  powershell -ExecutionPolicy Bypass -File health-check.ps1 -Interval 10 -Continuous
+
+Ce qu'il affiche:
+  ✓ État de chaque service (OK/OFFLINE)
+    - Backend .................. [OK]
+    - Frontend ................ [OK]
+    - PostgreSQL .............. [OK]
+    - Redis ................... [OK]
+    - Prometheus .............. [OK]
+    - Grafana ................. [OK]
+  
+  ✓ Statut des conteneurs Docker
+  ✓ Utilisation CPU/Memory
+  ✓ Liens d'accès rapides
+  ✓ Mise à jour automatique toutes les N secondes
+
+Utilité:
+  → À lancer dans un terminal séparé lors du déploiement
+  → Pour vérifier que tous les services sont sains
+  → Pour monitoring en temps réel de la production
+
+
+═══════════════════════════════════════════════════════════════════════════════
+OPTION 3: DÉPLOIEMENT COMPLET EN 1 CLIC (avec options)
+═══════════════════════════════════════════════════════════════════════════════
+
+Fichier:  deploy-aquamind.ps1 OU deploy.bat
+Chemin:   C:\Users\user\Desktop\PROJET _PROJET\AQUAMIND\
+
+SOUS-OPTION 3A: Avec PowerShell (Plus de contrôle)
+─────────────────────────────────────────────────
+
+Fichier:  deploy-aquamind.ps1
+
+Utilisation:
+  powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action deploy
+
+Actions disponibles:
+  -Action deploy    Déploiement complet avec vérifications
+  -Action status    Afficher l'état des services
+  -Action logs      Voir les logs en direct
+  -Action down      Arrêter tous les services
+  -Action restart   Redémarrer tous les services
+  -Action health    Lancer le health-check
+
+Exemples:
+  # Déploiement complet
+  powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action deploy
+
+  # Voir le statut
+  powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action status
+
+  # Voir les logs
+  powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action logs
+
+  # Arrêter
+  powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action down
+
+Le script va:
+  1. Vérifier Docker Desktop
+  2. Vérifier Docker Compose
+  3. Vérifier les fichiers du projet
+  4. Copier .env.example → .env
+  5. Nettoyer les conteneurs existants
+  6. Construire et démarrer tous les services
+  7. Attendre le démarrage (2-5 minutes)
+  8. Afficher les URLs d'accès
+
+
+SOUS-OPTION 3B: Avec Batch (Interface classique)
+─────────────────────────────────────────────────
+
+Fichier:  deploy.bat
+
+Utilisation:
+  → Double-cliquez simplement sur deploy.bat
+
+Ce qu'il fait:
+  1. Vérification complète des prérequis
+  2. Lancement de Docker Desktop (si nécessaire)
+  3. Copie de la configuration .env
+  4. Déploiement avec docker-compose
+  5. Attente du démarrage (30-60 sec)
+  6. Affichage des URLs d'accès
+  7. Option pour ouvrir le navigateur
+
+Avantages:
+  ✓ Interface batch classique familière
+  ✓ Pas besoin de PowerShell
+  ✓ Gestion d'erreurs robuste
+
+
+═══════════════════════════════════════════════════════════════════════════════
+TABLEAU COMPARATIF DES 3 OPTIONS
+═══════════════════════════════════════════════════════════════════════════════
+
+┌──────────────────┬─────────────────┬──────────────────┬────────────────────┐
+│ Aspect           │ OPTION 1        │ OPTION 2         │ OPTION 3           │
+│                  │ (START.bat)     │ (health-check)   │ (deploy scripts)   │
+├──────────────────┼─────────────────┼──────────────────┼────────────────────┤
+│ Facilité         │ ⭐⭐⭐⭐⭐       │ ⭐⭐⭐            │ ⭐⭐⭐⭐           │
+│ d'utilisation    │ Super simple    │ Modéré           │ Flexible           │
+├──────────────────┼─────────────────┼──────────────────┼────────────────────┤
+│ Utilisateur      │ Non-tech        │ DevOps/Tech      │ Tech/DevOps        │
+│ cible            │ Tutti frutti    │ Tous             │ Tous               │
+├──────────────────┼─────────────────┼──────────────────┼────────────────────┤
+│ Docker auto      │ ✓ Oui           │ ✗ Non            │ ✓ Oui              │
+│ launch           │                 │                  │                    │
+├──────────────────┼─────────────────┼──────────────────┼────────────────────┤
+│ Déploiement      │ ✓ Inclus        │ ✗ Séparé         │ ✓ Inclus           │
+│ inclus           │                 │ (monitoring)     │                    │
+├──────────────────┼─────────────────┼──────────────────┼────────────────────┤
+│ Menu             │ ✓ Interactif    │ ✗ Non            │ ✓ Paramètres       │
+│ options          │                 │                  │                    │
+├──────────────────┼─────────────────┼──────────────────┼────────────────────┤
+│ Monitoring       │ ✗ Non           │ ✓ Oui (continu)  │ ✓ Oui (une fois)   │
+│ en temps réel    │                 │                  │                    │
+├──────────────────┼─────────────────┼──────────────────┼────────────────────┤
+│ Commande         │ Fichier         │ powershell       │ powershell ou      │
+│ exécution        │ exécutable      │ -File            │ batch              │
+├──────────────────┼─────────────────┼──────────────────┼────────────────────┤
+│ Cas d'usage      │ Nouveau          │ Vérif santé      │ CI/CD ou           │
+│ idéal            │ déploiement      │ en production    │ production         │
+└──────────────────┴─────────────────┴──────────────────┴────────────────────┘
+
+
+═══════════════════════════════════════════════════════════════════════════════
+WORKFLOW RECOMMANDÉ
+═══════════════════════════════════════════════════════════════════════════════
+
+Pour un nouvel utilisateur (non-tech):
+  1. Double-cliquez START.bat
+  2. Attendez Docker
+  3. Choisissez "2 = Full deployment"
+  4. Attendez 2-5 minutes
+  5. Ouvrez http://localhost:3000/index.html
+
+Pour un DevOps/Administrateur:
+  1. Terminal 1: Lancer le déploiement
+     powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action deploy
+
+  2. Terminal 2 (en parallèle): Monitoring
+     powershell -ExecutionPolicy Bypass -File health-check.ps1 -Continuous
+
+  3. Une fois déployé: Contrôle
+     powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action status
+
+  4. Pour arrêter:
+     powershell -ExecutionPolicy Bypass -File deploy-aquamind.ps1 -Action down
+
+
+═══════════════════════════════════════════════════════════════════════════════
+RÉSUMÉ RAPIDE
+═══════════════════════════════════════════════════════════════════════════════
+
+✅ OPTION 1 (START.bat)
+   → Pour les utilisateurs qui veulent déployer rapidement sans se compliquer
+   → "Je veux juste lancer l'app!"
+   → Double-cliquez et c'est tout
+
+✅ OPTION 2 (health-check.ps1)
+   → Pour surveiller la santé des services en temps réel
+   → "Est-ce que tout fonctionne bien?"
+   → À lancer dans un terminal séparé
+
+✅ OPTION 3 (deploy-aquamind.ps1 ou deploy.bat)
+   → Pour contrôler chaque étape du déploiement
+   → "J'aime les options et la flexibilité"
+   → Actions spécifiques: deploy, status, logs, down, restart
+
+═══════════════════════════════════════════════════════════════════════════════
+QUE SE PASSE-T-IL LORS DU DÉPLOIEMENT?
+═══════════════════════════════════════════════════════════════════════════════
+
+Minute 1-2:
+  ✓ Docker Desktop démarre
+  ✓ Vérification des fichiers
+  
+Minute 3-5:
+  ✓ Construction des images Docker:
+    - Backend (FastAPI)
+    - Frontend (React + Nginx)
+    - PostgreSQL
+    - Redis
+    - Prometheus
+    - Grafana
+  ✓ Création des volumes de données
+  
+Minute 5-7:
+  ✓ Démarrage des conteneurs
+  ✓ Initialisation de la base de données
+  ✓ Démarrage des services
+  
+Minute 7-10:
+  ✓ Tous les services prêts!
+  ✓ Affichage des URLs d'accès
+
+═══════════════════════════════════════════════════════════════════════════════
+PRÊT?
+═══════════════════════════════════════════════════════════════════════════════
+
+Choisissez votre option:
+
+  👉 OPTION 1 (Débutant)      → Double-cliquez START.bat
+
+  👉 OPTION 2 (Monitoring)    → Lancez health-check.ps1 dans un terminal
+
+  👉 OPTION 3 (Avancé)        → Exécutez deploy-aquamind.ps1 avec -Action
+
+═══════════════════════════════════════════════════════════════════════════════
+C'EST PARTI! 🚀
+
+Vous avez un système Production-Ready complet!
+
+Status: ✅ READY TO DEPLOY
+Dernière mise à jour: 26 février 2026
